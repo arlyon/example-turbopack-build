@@ -1,7 +1,6 @@
-import path from "path";
-import fs from "fs";
+import path from "node:path";
+import fs from "node:fs";
 
-import * as Keyv from "keyv";
 import Image from "next/image";
 import { Suspense } from "react";
 import { hashSync } from "@node-rs/bcrypt";
@@ -10,18 +9,18 @@ import { Client } from "./client";
 export const dynamic = "force-dynamic";
 
 export async function GetVisitorCount() {
-  const keyv = new Keyv.default(process.env.KV_URL);
-  const visits = await keyv.get("visits");
+  // const keyv = new Keyv.default(process.env.KV_URL);
+  // const visits = await keyv.get("visits");
 
-  if (visits) {
-    await keyv.set("visits", visits + 1);
-  } else {
-    await keyv.set("visits", 1);
-  }
+  // if (visits) {
+  //   await keyv.set("visits", visits + 1);
+  // } else {
+  //   await keyv.set("visits", 1);
+  // }
 
   await new Promise((resolve) => setTimeout(resolve, 500));
 
-  return <span>{visits}</span>;
+  return <span>1</span>;
 }
 
 export default async function Home() {
